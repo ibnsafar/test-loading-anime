@@ -1,0 +1,40 @@
+.wrapper .header {
+  background-color: #ffffff;
+}
+.wrapper .header img {
+  width: 198px;
+  height: 30px;
+  margin: 7px 0 22px 20px;
+}
+.wrapper .body-wrapper .body {
+  width: 1200px;
+  margin: 29px auto 0 29px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
+.wrapper .body-wrapper .body .b-main {
+  position: relative;
+}
+.wrapper .body-wrapper .body .b-main .b-title {
+  color: #00CC99;
+}
+.wrapper .body-wrapper .body .b-main .b-input {
+  width: 600px;
+  height: 60px;
+  border: none;
+  outline: none;
+  margin-top: 24px;
+}
+.wrapper .body-wrapper .body .b-main .b-x {
+  width: 17px;
+  height: 17px;
+  position: absolute;
+  top: 84px;
+  right: 10px;
+  cursor: pointer;
+}
+
+/*# sourceMappingURL=home.css.map */
