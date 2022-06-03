@@ -1,4 +1,4 @@
-import {FC} from "react";
+import {FC, useEffect} from "react";
 import Home from "./pages/Home";
 
 const App: FC = () => {

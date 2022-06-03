@@ -8,7 +8,7 @@
 }
 .wrapper .body-wrapper .body {
   width: 1200px;
-  margin: 29px auto 0 29px;
+  margin: auto;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -20,6 +20,7 @@
 }
 .wrapper .body-wrapper .body .b-main .b-title {
   color: #00CC99;
+  margin-top: 29px;
 }
 .wrapper .body-wrapper .body .b-main .b-input {
   width: 600px;
@@ -32,8 +33,71 @@
   width: 17px;
   height: 17px;
   position: absolute;
-  top: 84px;
+  top: 114px;
   right: 10px;
+  cursor: pointer;
+}
+.wrapper .body-wrapper .body .b-content .b-more {
+  width: 159px;
+  height: 50px;
+  border: none;
+  background: #00CC99;
+  border-radius: 5px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin: 14px auto auto;
+}
+.wrapper .body-wrapper .body .b-content .b-more img {
+  width: 24px;
+  height: 24px;
+  margin-left: 20px;
+}
+.wrapper .body-wrapper .body .b-content .b-content-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  margin-top: 32px;
+}
+.wrapper .body-wrapper .body .b-content .b-content-container .b-card {
+  width: 373px;
+  height: 309px;
+  background-color: #ffffff;
+  position: relative;
+  cursor: pointer;
+}
+.wrapper .body-wrapper .body .b-content .b-content-container .b-card .card-img {
+  height: 179px;
+}
+.wrapper .body-wrapper .body .b-content .b-content-container .b-card .card-name {
+  font-weight: 700;
+  font-size: 16px;
+}
+.wrapper .body-wrapper .body .b-content .b-content-container .b-card .card-fav {
+  width: 20px;
+  height: 18px;
+  position: absolute;
+  top: 280px;
+  right: 10px;
+  cursor: pointer;
+}
+.wrapper .body-wrapper .body .b-fav .b-fav-title {
+  color: #00CC99;
+}
+.wrapper .body-wrapper .body .b-fav .b-fav-container {
+  display: flex;
+}
+.wrapper .body-wrapper .body .b-fav .b-fav-container .fav-card {
+  display: flex;
+  width: 361px;
+  height: 217px;
+  background-color: #ffffff;
+}
+.wrapper .body-wrapper .body .b-fav .b-fav-container .fav-card .f-c-right .f-c-l {
+  width: 26px;
+  height: 26px;
   cursor: pointer;
 }
 

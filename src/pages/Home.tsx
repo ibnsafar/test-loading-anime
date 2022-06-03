@@ -1,41 +1,18 @@
 import {FC, useState} from "react";
+import {useQuery} from "@apollo/client";
+import {query} from "../gql/Query";
+import {connect} from "react-redux";
 import "./css/home.css";
 
-const Home: FC = () => {
-    const [search, setSearch] = useState<string>("");
-    let favouriteAnime = [];
-    let content = [
-        {
-            img: "",
-            name: "Shiguang Dailiren",
-            japanese: "时光代理人"
-        },
-        {
-            img: "",
-            name: "Shiguang Dailiren",
-            japanese: "时光代理人"
-        },
-        {
-            img: "",
-            name: "Shiguang Dailiren",
-            japanese: "时光代理人"
-        },
-        {
-            img: "",
-            name: "Shiguang Dailiren",
-            japanese: "时光代理人"
-        },
-        {
-            img: "",
-            name: "Shiguang Dailiren",
-            japanese: "时光代理人"
-        },
-        {
-            img: "",
-            name: "Shiguang Dailiren",
-            japanese: "时光代理人"
-        },
-    ];
+const Home: FC = (resData: any) => {
+    const [search, setSearch] = useState<string>("shi");
+    // const [loading, error, data]: any = useQuery(getTest);
+    // const data: any = useQuery(query).data;
+    // console.log(resData)
+    const animeList = resData.animeList;
+    const favAnime = resData.favAnime;
+    console.log(resData)
+
     return (
         <div className={"wrapper"}>
             {/*header*/}
@@ -63,23 +40,40 @@ const Home: FC = () => {
                     </div>
                     {/*    content*/}
                     <div className="b-content">
-                        {content.length > 0 ? content.map((item: any, index: number) => {
-                            return <div key={index} className={"b-card"}>
-                                <img className={"card-img"}
-                                    src="" alt="img"/>
-                                <p className={"card-"}>{item.name}</p>
-                                <p>{item.japanese}</p>
-                                <img
-                                    onClick={() => favouriteAnime.push(item)}
-                                    src={require("./../assets/fav.png")
-                                    } alt="fav"/>
-                            </div>
-                        }) : <p>loading</p>}
+                        <div className="b-content-container">
+                            {animeList.length > 0 ? animeList.map((item: any, index: number) => {
+                                return <div key={index} className={"b-card"}>
+                                    <img className={"card-img"}
+                                         src={require("./../assets/girl.png")} alt="img"/>
+                                    <p className={"card-name"}>{item.name}</p>
+                                    <p className={"card-j"}>{item.japanese}</p>
+                                    <img
+                                        className={"card-fav"}
+                                        // onClick={() => favouriteAnime.push(content[item])}
+                                        src={require("./../assets/fav.png")
+                                        } alt="fav"/>
+                                </div>
+                            }) : <p>no media</p>}
+                        </div>
+                        <button className={"b-more"}>MORE <img
+                            src={require("./../assets/more.png")} alt=""/></button>
                     </div>
-                    {/*    favourite anime*/}
-                    {favouriteAnime.length > 0 &&
+                    {favAnime.length > 0 &&
                         <div className={"b-fav"}>
-                            <h1>favourite</h1>
+                            <h1 className={"b-fav-title"}>Любимое аниме</h1>
+                            <div className="b-fav-container">
+                                {favAnime.length > 0 && favAnime.map((item: any, index: number) => {
+                                    return <div key={index} className={"fav-card"}>
+                                        <img className={"f-c-img"}
+                                             src={require("./../assets/fav-girl.png")} alt=""/>
+                                        <div className={"f-c-right"}>
+                                            <p className={"f-c-n"}>{item.name}</p>
+                                            <img className={"f-c-l"}
+                                                 src={require("./../assets/closing.png")} alt=""/>
+                                        </div>
+                                    </div>
+                                })}
+                            </div>
                         </div>
                     }
                 </div>
@@ -87,4 +81,9 @@ const Home: FC = () => {
         </div>
     )
 }
-export default Home;
+export default connect((state: any) => {
+    return {
+        animeList: state.animeReducer.animeList,
+        favAnime: state.animeReducer.favAnime
+    }
+}, {})(Home);
